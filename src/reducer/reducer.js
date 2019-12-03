@@ -1,4 +1,4 @@
-import {SET_FILTER, SET_TODOS, ADD_TODO, REMOVE_TODO} from "../actions/actions";
+import {SET_FILTER, SET_TODOS, ADD_TODO, REMOVE_TODO, REMOVE_ALL} from "../actions/actions";
 
 const rootReducer = function (state = {
     activeFilter: "all",
@@ -17,6 +17,11 @@ const rootReducer = function (state = {
                 ...state,
                 todos: newTodos
             };
+        case REMOVE_ALL:
+            console.log("Hello World!")
+            return {
+              todos: []
+            }
         default:
             return state;
     }
