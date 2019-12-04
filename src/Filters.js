@@ -15,7 +15,7 @@ class Filters extends Component {
         return <div>
             {
                 options.map((option) => {
-                    return <div onClick={() => {
+                    return <div key={Math.random()} onClick={() => {
                         this.props.changeFilter(option.labelKey);
                     }}>
                         {option.label}

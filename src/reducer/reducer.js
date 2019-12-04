@@ -1,8 +1,10 @@
-import {SET_FILTER, SET_TODOS, ADD_TODO, REMOVE_TODO, REMOVE_ALL} from "../actions/actions";
+import {SET_FILTER, SET_TODOS, ADD_TODO, REMOVE_TODO, REMOVE_ALL,TOGGLE, SHOWING, HIDING} from "../actions/actions";
 
 const rootReducer = function (state = {
     activeFilter: "all",
-    todos: []
+    todos: [],
+    visible: false,
+    message: ''
 }, action) {
     switch (action.type) {
         case SET_FILTER:
@@ -18,10 +20,25 @@ const rootReducer = function (state = {
                 todos: newTodos
             };
         case REMOVE_ALL:
-            console.log("Hello World!")
             return {
               todos: []
             }
+        case TOGGLE:
+            return{
+              ...state, todos: state.todos.map(todo => {
+                if (action.id === todo.id){
+                  let currentTodo = {...todo};
+                  currentTodo.checked = !currentTodo.checked;
+                  return currentTodo;
+                } else {
+                  return todo;
+                }
+              })
+            }
+        case SHOWING:
+          return {...state, visible: true}
+        case HIDING:
+          return {...state, visible: false}
         default:
             return state;
     }

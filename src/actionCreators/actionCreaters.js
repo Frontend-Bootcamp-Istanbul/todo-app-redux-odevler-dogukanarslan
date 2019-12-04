@@ -1,4 +1,4 @@
-import {SET_FILTER, SET_TODOS, ADD_TODO, REMOVE_TODO, REMOVE_ALL} from "../actions/actions";
+import {SET_FILTER, SET_TODOS, ADD_TODO, REMOVE_TODO, REMOVE_ALL, TOGGLE, SHOWING, HIDING} from "../actions/actions";
 
 export function setFilter(newFilter){
     return {type: SET_FILTER, activeFilter: newFilter}
@@ -18,4 +18,16 @@ export function removeTodo(id){
 
 export function removeAll(todos){
   return {type: REMOVE_ALL, todos}
+}
+
+export function toggle(id){
+  return {type: TOGGLE,id}
+}
+
+export function showing(){
+  return {type: SHOWING}
+}
+
+export function hiding(){
+  return {type: HIDING}
 }
