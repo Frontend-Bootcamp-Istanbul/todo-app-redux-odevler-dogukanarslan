@@ -12,7 +12,6 @@ class App extends Component {
   constructor(props){
     super(props);
     this.addTodo = this.addTodo.bind(this);
-    this.toggleCompleteStatus = this.toggleCompleteStatus.bind(this);
   }
 
   componentDidMount() {
@@ -35,10 +34,6 @@ class App extends Component {
       this.props.addTodo();
   }
 
-
-  toggleCompleteStatus(id){
-
-  }
 
   filterTodos = (todos, filterType) => {
     if(filterType === "all"){
