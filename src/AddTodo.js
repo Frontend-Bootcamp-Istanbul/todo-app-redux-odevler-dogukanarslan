@@ -28,11 +28,11 @@ class AddTodo extends React.Component {
         this.showing();
         setTimeout(()=>{
           this.hiding();
-        },1000);
+        },2500);
     }
 
     showing(){
-      this.props.showing();
+      this.props.showing(this.state.inputVal);
     }
     hiding(){
       this.props.hiding();
@@ -70,7 +70,9 @@ const mapDispatchToProps =  dispatch => ({
       id: Math.random(),
       checked: false
   }))},
-  showing: () => {dispatch(showing())},
+  showing: input => {dispatch(showing({
+    content: input
+  }))},
   hiding: () => {dispatch(hiding())}
 });
 

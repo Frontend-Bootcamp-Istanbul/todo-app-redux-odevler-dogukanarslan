@@ -24,8 +24,8 @@ export function toggle(id){
   return {type: TOGGLE,id}
 }
 
-export function showing(){
-  return {type: SHOWING}
+export function showing(todo){
+  return {type: SHOWING,todo}
 }
 
 export function hiding(){

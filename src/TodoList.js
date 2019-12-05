@@ -7,7 +7,7 @@ class TodoList extends React.Component{
     render(){
         return (
             <div className="todo-list">
-                <h3>{this.props.title} <span>{this.props.todos.length}</span>
+                <h3>Todolist <span>{this.props.todos.length}</span>
                 </h3>
                 {
                     this.props.todos.map((todo) => {

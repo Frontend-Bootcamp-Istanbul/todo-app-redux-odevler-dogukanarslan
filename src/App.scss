@@ -15,7 +15,6 @@ body {
     border: 1px solid #ddd;
   }
   .App{
-    position: relative;
     h3 {
       background: $main-bg;
       text-align: center;
@@ -31,7 +30,6 @@ body {
       padding: 5px 15px;
       font-size: 1em;
     }
-
     button.remove-all{
       width: 90%;
       margin: 0 auto;
@@ -62,7 +60,8 @@ body {
           font-size: 1em;
         }
         .not{
-          color: $main-bg;
+          color: whitesmoke;
+          background-color: $main-bg;
           text-align: center;
         }
       }
@@ -86,6 +85,5 @@ body {
     .todo-list + .todo-list {
       border-left: 2px solid darkgray;
     }
-
   }
 }

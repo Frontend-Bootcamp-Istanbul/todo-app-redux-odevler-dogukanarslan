@@ -12,7 +12,11 @@ const rootReducer = function (state = {
         case SET_TODOS:
             return {...state, todos: action.todos}
         case ADD_TODO:
-            return {...state, todos: state.todos.concat([action.todo])}
+            if (action.todo.content.length < 5){
+              return {...state};
+            } else{
+              return {...state, todos: state.todos.concat([action.todo])}
+            }
         case REMOVE_TODO:
             const newTodos = state.todos.filter((todo) => todo.id !== action.id);
             return {
@@ -36,7 +40,12 @@ const rootReducer = function (state = {
               })
             }
         case SHOWING:
-          return {...state, visible: true}
+          if (action.todo.content.length < 5){
+            return {...state};
+          } else {
+            return {...state, visible: true}
+          }
+
         case HIDING:
           return {...state, visible: false}
         default:

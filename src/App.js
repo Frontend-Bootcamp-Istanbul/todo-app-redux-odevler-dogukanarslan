@@ -9,10 +9,6 @@ import {setTodos, addTodo} from "./actionCreators/actionCreaters";
 
 
 class App extends Component {
-  constructor(props){
-    super(props);
-    this.addTodo = this.addTodo.bind(this);
-  }
 
   componentDidMount() {
       console.log("GÜncel proplar", this.props);
@@ -21,7 +17,7 @@ class App extends Component {
     if(localTodos){
       localTodos  = JSON.parse(localTodos);
     }
-    this.props.addTodos(localTodos || []);
+    this.props.setTodos(localTodos || []);
   }
 
   componentDidUpdate(prevProps, prevState, snapshot) {
@@ -29,11 +25,6 @@ class App extends Component {
           window.localStorage.setItem("todos", JSON.stringify(this.props.todos))
       }
   }
-
-    addTodo(newTodo){
-      this.props.addTodo();
-  }
-
 
   filterTodos = (todos, filterType) => {
     if(filterType === "all"){
@@ -56,9 +47,7 @@ class App extends Component {
                     <Filters />
                 </div>
             </div>
-            <TodoList
-                title="Todolist"
-                todos={this.filterTodos(this.props.todos, this.props.activeFilter)} />
+            <TodoList todos={this.filterTodos(this.props.todos, this.props.activeFilter)} />
         </div>
     );
   }
@@ -70,7 +59,7 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-    addTodos: (todos) => {dispatch(setTodos(todos))},
+    setTodos: (todos) => {dispatch(setTodos(todos))},
     addTodo: (todo) => {dispatch(addTodo(todo))}
 });
 
